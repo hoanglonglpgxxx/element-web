@@ -86,7 +86,7 @@ const tasks: UserOnboardingTask[] = [
             onClick: onClickStartDm,
         },
     },
-    {
+    /* {
         id: "download-apps",
         title: () =>
             _t("onboarding|download_app", {
@@ -107,7 +107,7 @@ const tasks: UserOnboardingTask[] = [
         disabled(): boolean {
             return !showAppDownloadDialogPrompt();
         },
-    },
+    }, */
     {
         id: "setup-profile",
         title: _t("onboarding|set_up_profile"),

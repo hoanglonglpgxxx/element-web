@@ -25,6 +25,7 @@ import { SettingLevel } from "./settings/SettingLevel";
 import { retry } from "./utils/promise";
 import SdkConfig from "./SdkConfig";
 import { ModuleRunner } from "./modules/ModuleRunner";
+import config from '../config.json';
 
 // @ts-ignore - $webapp is a webpack resolve alias pointing to the output directory, see webpack config
 import webpackLangJsonUrl from "$webapp/i18n/languages.json";
@@ -527,9 +528,9 @@ export async function getAllLanguagesWithLabels(): Promise<Language[]> {
 }
 
 export function getLanguagesFromBrowser(): readonly string[] {
-    if (navigator.languages && navigator.languages.length) return navigator.languages;
-    if (navigator.language) return [navigator.language];
-    return [navigator.userLanguage || "en"];
+    return [config.setting_defaults.default_language || "en"];
+    /* if (navigator.languages && navigator.languages.length) return navigator.languages;
+    if (navigator.language) return [navigator.language]; */
 }
 
 export function getLanguageFromBrowser(): string {
