@@ -24,6 +24,7 @@ import AccessibleButton from "./AccessibleButton";
 import { _t } from "../../../languageHandler";
 import { mediaFromMxc } from "../../../customisations/Media";
 import { PosthogAnalytics } from "../../../PosthogAnalytics";
+import config from "../../../../config.json";
 
 interface ISSOButtonProps extends IProps {
     idp?: IIdentityProvider;
@@ -179,24 +180,29 @@ const SSOButtons: React.FC<IProps> = ({
 
     const rows = Math.ceil(providers.length / MAX_PER_ROW);
     const size = Math.ceil(providers.length / rows);
-
+    const excludeFlows = config.exclude_flows.map(flow => flow.id);
     return (
         <div className="mx_SSOButtons">
             {chunk(providers, size).map((chunk) => (
                 <div key={chunk[0].id} className="mx_SSOButtons_row">
-                    {chunk.map((idp) => (
-                        <SSOButton
-                            key={idp.id}
-                            matrixClient={matrixClient}
-                            loginType={loginType}
-                            fragmentAfterLogin={fragmentAfterLogin}
-                            idp={idp}
-                            mini={true}
-                            primary={primary}
-                            action={action}
-                            flow={flow}
-                        />
-                    ))}
+                    {chunk.map((idp) => {
+                        if (!excludeFlows.includes(idp.id)) {
+                            return (
+                                <SSOButton
+                                    key={idp.id}
+                                    matrixClient={matrixClient}
+                                    loginType={loginType}
+                                    fragmentAfterLogin={fragmentAfterLogin}
+                                    idp={idp}
+                                    mini={true}
+                                    primary={primary}
+                                    action={action}
+                                    flow={flow}
+                                />
+                            );
+                        }
+                        return null;
+                    })}
                 </div>
             ))}
         </div>

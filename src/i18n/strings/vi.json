@@ -255,6 +255,7 @@
         "reset_password_email_not_found_title": "Địa chỉ thư điện tử này không tồn tại trong hệ thống",
         "reset_password_title": "Đặt lại mật khẩu của bạn",
         "server_picker_custom": "Máy chủ khác",
+        "server_picker_description": "Testakjosnjdkjhnasjknd",
         "server_picker_description_matrix.org": "Tham gia hàng triệu máy chủ công cộng miễn phí lớn nhất",
         "server_picker_dialog_title": "Quyết định nơi tài khoản của bạn được lưu trữ",
         "server_picker_explainer": "Sử dụng máy chủ Matrix ưa thích của bạn nếu bạn có, hoặc tự tạo máy chủ lưu trữ của riêng bạn.",

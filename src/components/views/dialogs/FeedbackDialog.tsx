@@ -101,8 +101,8 @@ const FeedbackDialog: React.FC<IProps> = (props: IProps) => {
         );
     }
 
-    const existingIssuesUrl = SdkConfig.getObject("feedback").get("existing_issues_url");
-    const newIssueUrl = SdkConfig.getObject("feedback").get("new_issue_url");
+    const existingIssuesUrl = SdkConfig.getObject("feedback")?.get("existing_issues_url");
+    const newIssueUrl = SdkConfig.getObject("feedback")?.get("new_issue_url");
 
     return (
         <QuestionDialog
@@ -111,7 +111,8 @@ const FeedbackDialog: React.FC<IProps> = (props: IProps) => {
             title={_t("common|feedback")}
             description={
                 <React.Fragment>
-                    <div className="mx_FeedbackDialog_section mx_FeedbackDialog_reportBug">
+                    {SdkConfig.getObject("feedback") && (
+                        <div className="mx_FeedbackDialog_section mx_FeedbackDialog_reportBug">
                         <h3>{_t("common|report_a_bug")}</h3>
                         <p>
                             {_t(
@@ -140,7 +141,8 @@ const FeedbackDialog: React.FC<IProps> = (props: IProps) => {
                             )}
                         </p>
                         {bugReports}
-                    </div>
+                    </div>)}
+                    
                     {feedbackSection}
                 </React.Fragment>
             }

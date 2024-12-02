@@ -528,9 +528,18 @@ export async function getAllLanguagesWithLabels(): Promise<Language[]> {
 }
 
 export function getLanguagesFromBrowser(): readonly string[] {
-    return [config.setting_defaults.default_language || "en"];
-    /* if (navigator.languages && navigator.languages.length) return navigator.languages;
-    if (navigator.language) return [navigator.language]; */
+    let lang: string[] = [];
+    if (config.setting_defaults.default_language) {
+        lang = [config.setting_defaults.default_language || "en"];
+    } else {
+        if (navigator.languages && navigator.languages.length) {
+            return navigator.languages;
+        }
+        if (navigator.language) {
+            return [navigator.language];
+        }
+    }
+    return lang;
 }
 
 export function getLanguageFromBrowser(): string {

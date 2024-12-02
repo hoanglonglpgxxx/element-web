@@ -91,6 +91,7 @@ export default class LanguageDropdown extends React.Component<IProps, IState> {
         }
 
         let displayedLanguages: Awaited<ReturnType<typeof languageHandler.getAllLanguagesWithLabels>>;
+        
         if (this.state.searchQuery) {
             displayedLanguages = this.state.langs.filter((lang) => {
                 return languageMatchesSearchQuery(this.state.searchQuery, lang);
@@ -98,6 +99,9 @@ export default class LanguageDropdown extends React.Component<IProps, IState> {
         } else {
             displayedLanguages = this.state.langs;
         }
+
+        console.log('longlh', this.state.langs);
+        
 
         const options = displayedLanguages.map((language) => {
             return <div key={language.value}>{language.labelInTargetLanguage}</div>;

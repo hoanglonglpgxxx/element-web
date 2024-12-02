@@ -17,7 +17,7 @@ import { DeepReadonly, Defaultize } from "./@types/common";
 
 // see element-web config.md for docs, or the IConfigOptions interface for dev docs
 export const DEFAULTS: DeepReadonly<IConfigOptions> = {
-    brand: "Element",
+    brand: "VMessenger",
     help_url: "https://element.io/help",
     help_encryption_url: "https://element.io/help#encryption",
     integrations_ui_url: "https://scalar.vector.im/",
@@ -33,7 +33,7 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
         url: "https://call.element.io",
         use_exclusively: false,
         participant_limit: 8,
-        brand: "Element Call",
+        brand: "VMessenger Call",
     },
 
     // @ts-ignore - we deliberately use the camelCase version here so we trigger
@@ -51,13 +51,13 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
         max_length: 4 * 60 * 60, // four hours
     },
 
-    feedback: {
+   /*  feedback: {
         existing_issues_url:
             "https://github.com/vector-im/element-web/issues?q=is%3Aopen+is%3Aissue+sort%3Areactions-%2B1-desc",
         new_issue_url: "https://github.com/vector-im/element-web/issues/new/choose",
-    },
+    }, */
 
-    desktop_builds: {
+    /* desktop_builds: {
         available: true,
         logo: "vector-icons/1024.png",
         url: "https://element.io/download",
@@ -70,7 +70,8 @@ export const DEFAULTS: DeepReadonly<IConfigOptions> = {
         ios: "https://apps.apple.com/app/vector/id1083446067",
         android: "https://play.google.com/store/apps/details?id=im.vector.app",
         fdroid: "https://f-droid.org/repository/browse/?fdid=im.vector.app",
-    },
+        
+    }, */
 };
 
 export type ConfigOptions = Defaultize<IConfigOptions, typeof DEFAULTS>;
